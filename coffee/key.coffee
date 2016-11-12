@@ -150,10 +150,10 @@ g.key.shiftWinKeyIdentifier_us =
 
 keyCodes      = g.key.keyCodes
 macOptionWithKeyIdentifier = g.key.macOptionWithKeyIdentifier
-winKeyIdentifier_ja      = g.key.winKeyIdentifier_ja
-shiftWinKeyIdentifier_ja = g.key.shiftWinKeyIdentifier_ja
-winKeyIdentifier_us      = g.key.winKeyIdentifier_us
-shiftWinKeyIdentifier_us = g.key.shiftWinKeyIdentifier_us
+winKeyIdentifier_ja        = g.key.winKeyIdentifier_ja
+shiftWinKeyIdentifier_ja   = g.key.shiftWinKeyIdentifier_ja
+winKeyIdentifier_us        = g.key.winKeyIdentifier_us
+shiftWinKeyIdentifier_us   = g.key.shiftWinKeyIdentifier_us
 util = g.util
 
 g.KeyManager =
