@@ -154,7 +154,7 @@ class g.TabHistory
 
         chrome.tabs.onUpdated.addListener( (tabId, info, tab) =>
             target = @openTabs[tab.windowId][tabId]
-            if info.url
+            if target && info.url
                 target.tab.url = info.url
                 target.history.push info.url
             if info.pinned
