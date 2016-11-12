@@ -200,6 +200,7 @@ g.key.shiftWinKeyIdentifier_us =
 
 keyCodes      = g.key.keyCodes
 macOptionWithKeyIdentifier = g.key.macOptionWithKeyIdentifier
+macOptionAndShiftWithKeyIdentifier = g.key.macOptionAndShiftWithKeyIdentifier
 winKeyIdentifier_ja      = g.key.winKeyIdentifier_ja
 shiftWinKeyIdentifier_ja = g.key.shiftWinKeyIdentifier_ja
 winKeyIdentifier_us      = g.key.winKeyIdentifier_us
@@ -262,6 +263,9 @@ g.KeyManager =
           if alt
             if macOptionWithKeyIdentifier[code]?
               result = g.key.macOptionWithKeyIdentifier[code]
+          if alt && shift
+            if macOptionAndShiftWithKeyIdentifier[code]?
+              result = g.key.macOptionAndShiftWithKeyIdentifier[code]
 
         if result? and @isAlphabet result
             if shift
