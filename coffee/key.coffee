@@ -149,6 +149,7 @@ g.key.shiftWinKeyIdentifier_us =
     "U+0030":")"
 
 keyCodes      = g.key.keyCodes
+macOptionWithKeyIdentifier = g.key.macOptionWithKeyIdentifier
 winKeyIdentifier_ja      = g.key.winKeyIdentifier_ja
 shiftWinKeyIdentifier_ja = g.key.shiftWinKeyIdentifier_ja
 winKeyIdentifier_us      = g.key.winKeyIdentifier_us
@@ -207,6 +208,10 @@ g.KeyManager =
                 else
                     if winKeyIdentifier_us[code]?
                         result = winKeyIdentifier_us[code]
+        else
+          if alt
+            if macOptionWithKeyIdentifier[code]?
+              result = g.key.macOptionWithKeyIdentifier[code]
 
         if result? and @isAlphabet result
             if shift
