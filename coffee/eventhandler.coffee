@@ -21,11 +21,11 @@ class g.EventHandler
     # decide whether to post the key event and do some pre-post process
     # return true if the key event can be posted.
     getHandlableKey : (e) ->
-        if g.KeyManager.isOnlyModifier( e.keyIdentifier, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
+        if g.KeyManager.isOnlyModifier( e.key, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
             g.logger.d "getHandlableKey:only modifier"
             return undefined
 
-        code = g.KeyManager.getLocalKeyCode( e.keyIdentifier, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
+        code = g.KeyManager.getLocalKeyCode( e.key, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
         unless code?
             g.logger.d "getHandlableKey:cant be handled"
             return undefined

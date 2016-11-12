@@ -81,11 +81,11 @@ class g.CommandBox
         return
 
     onKeyDown : (e) ->
-        if g.KeyManager.isOnlyModifier( e.keyIdentifier, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
+        if g.KeyManager.isOnlyModifier( e.key, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
             g.logger.d "getHandlableKey:only modefier"
             return
 
-        code = g.KeyManager.getLocalKeyCode( e.keyIdentifier, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
+        code = g.KeyManager.getLocalKeyCode( e.key, e.ctrlKey, e.shiftKey, e.altKey, e.metaKey )
         unless code?
             g.logger.d "getHandlableKey:cant be handled"
             return
