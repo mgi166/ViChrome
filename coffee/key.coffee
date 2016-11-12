@@ -170,8 +170,8 @@ g.KeyManager =
         ( 48 <= c <=  57 )
 
     isOnlyModifier : (code, ctrl, shift, alt, meta) ->
-        switch keyCodes[@getLocalKeyCode(code, ctrl, shift, alt, meta)]
-            when keyCodes.CTRL, keyCodes.SHIFT, keyCodes.META, keyCodes.ALT
+        switch code
+            when "Control", "Shift", "Alt", "Meta"
                 return true
             else
                 return false
