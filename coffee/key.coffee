@@ -2,21 +2,21 @@ this.vichrome ?= {}
 g = this.vichrome
 g.key = {}
 
-g.key.keyCodes = 
-    ESC       : 27
-    TAB       : 9
-    SHIFT     : 16
-    BS        : 8
-    ALT       : 18
-    CTRL      : 17
-    META      : 91
-    DEL       : 46
-    CR        : 13
-    SPACE     : 32
-    LEFT      : 128
-    UP        : 129
-    RIGHT     : 130
-    DOWN      : 131
+g.key.keyCodes =
+    Escape    : 27
+    Tab       : 9
+    Shift     : 16
+    Backspace : 8
+    Alt       : 18
+    Control   : 17
+    Meta      : 91
+    Delete    : 46
+    Enter     : 13
+    Space     : 32
+    ArrowRight: 128
+    ArrowUp   : 129
+    ArrowLeft : 130
+    ArrowDown : 131
     F1        : 132
     F2        : 133
     F3        : 134
@@ -101,10 +101,10 @@ g.key.keyIdentifier =
     "U+003F"    : "?"
     "U+005F"    : "_"
     "U+0020"    : "SPACE"
-    "Left"      : "LEFT"
-    "Down"      : "DOWN"
-    "Up"        : "UP"
-    "Right"     : "RIGHT"
+    "ArrowLeft" : "LEFT"
+    "ArrowDown" : "DOWN"
+    "ArrowUp"   : "UP"
+    "ArrowRight": "RIGHT"
     "Enter"     : "CR"
     "U+0008"    : "BS"
     "U+007F"    : "DEL"
@@ -121,7 +121,7 @@ g.key.keyIdentifier =
     "F10"       : "F10"
     "F11"       : "F11"
     "F12"       : "F12"
-    "U+001B"    : "ESC"
+    "U+001B"    : "Escape"
     "Home"      : "HOME"
     "End"       : "END"
     "Control"   : "CTRL"

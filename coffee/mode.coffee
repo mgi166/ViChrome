@@ -424,7 +424,7 @@ class g.FMode extends g.Mode
                 g.view.hideStatusLine()
 
     prePostKeyEvent : (key, ctrl, alt, meta) ->
-        if key == "ESC" then return true
+        if key == "Escape" then return true
         if ctrl or alt or meta then return true
 
         key = key.toUpperCase() if g.model.getSetting("fModeIgnoreCase")
