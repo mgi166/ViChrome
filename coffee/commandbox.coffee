@@ -71,7 +71,7 @@ class g.CommandBox
             @reqEscape()
             return
 
-        if key.code == "CR"
+        if key.code == "Enter"
             @fixedListener?( @value() )
             @detachFrom()
             return
