@@ -169,4 +169,5 @@ g.KeyManager =
             else
                 result = result.toLowerCase()
 
+        result = "Space" if result == " "
         result
