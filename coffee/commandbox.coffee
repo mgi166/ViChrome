@@ -66,7 +66,7 @@ class g.CommandBox
 
     handleKey : (key) ->
         event.stopPropagation()
-        if @value().length == 0 and ( key.code == "BS" or key.code == "DEL" )
+        if @value().length == 0 and ( key.code == "Backspace" or key.code == "Delete" )
             event.preventDefault()
             @reqEscape()
             return

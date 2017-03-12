@@ -387,8 +387,8 @@ class g.FMode extends g.Mode
 
     isValidKey : (key) ->
         return ( @keys.indexOf( key ) >= 0 && key.length == 1 ) ||
-               ( key == 'BS' ) ||
-               ( key == 'DEL' )
+               ( key == 'Backspace' ) ||
+               ( key == 'Delete' )
 
     searchTarget : ->
         for elem, i in @hints
@@ -397,7 +397,7 @@ class g.FMode extends g.Mode
         return null
 
     treatNewInput : (key) ->
-        if key == "BS" || key == "DEL"
+        if key == "Backspace" || key == "Delete"
             if @currentInput.length == 0
                 g.model.enterNormalMode()
                 return
