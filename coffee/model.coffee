@@ -285,7 +285,7 @@ g.model =
         @frameID = msg.frameID
         @initEnabled = true
         if g.util.isTop()
-            chrome.extension.sendRequest( {
+            chrome.runtime.sendMessage( {
                 command : "NotifyTopFrame"
                 frameID : @frameID
             } )
@@ -319,5 +319,5 @@ g.model =
         param.sender  ?= @frameID
         param.keyMap  ?= g.extendDeep( @getCMap() )
         param.aliases ?= g.extendDeep( @getAlias() )
-        chrome.extension.sendRequest( param, (msg)-> g.handler.onCommandResponse(msg) )
+        chrome.runtime.sendMessage( param, (msg)-> g.handler.onCommandResponse(msg) )
 

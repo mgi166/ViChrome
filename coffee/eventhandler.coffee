@@ -58,7 +58,7 @@ class g.EventHandler
         document.addEventListener("mousedown" , ((e) => @onMouseDown(e)) , true)
 
     addExtListener : ->
-        chrome.extension.onRequest.addListener( (req, sender, sendResponse) =>
+        chrome.runtime.onMessage.addListener( (req, sender, sendResponse) =>
             g.logger.d "onRequest command: #{req.command}"
             if req.frameID? and req.frameID != g.model.frameID
                 g.logger.d "onRequest: different frameID"

@@ -58,7 +58,7 @@ class g.CommandBox
     reqFocusNextCandidate : (args) -> @nextCandidate()
     reqFocusPrevCandidate : (args) -> @prevCandidate()
     reqEscape : (args) ->
-        chrome.extension.sendRequest({
+        chrome.runtime.sendMessage({
             command      : "PassToFrame"
             innerCommand : "Escape"
         })
@@ -389,7 +389,7 @@ class g.CandSourceCommand extends g.CandidateSource
     id : "Command"
     constructor : (@maxItems=-1) ->
         super(@maxItems)
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetCommandTable"
         }, (msg) => @commands = msg )
 
@@ -412,7 +412,7 @@ class g.CandSourceAlias extends g.CandidateSource
     id : "Alias"
     constructor : (@maxItems=-1) ->
         super(@maxItems)
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetAliases"
         }, (msg) => @aliases = msg )
     onInput : (word) ->
@@ -437,7 +437,7 @@ class g.CandSourceHistory extends g.CandidateSource
         unless word.length > 0 then return
 
         @resetItem()
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetHistory"
             value   : word
         }, (items) =>
@@ -463,7 +463,7 @@ class g.CandSourceBookmark extends g.CandidateSource
         unless word.length > 0 then return
 
         @resetItem()
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetBookmark"
             value   : word
         }, (nodes) =>
@@ -485,7 +485,7 @@ class g.CandSourceSearchHist extends g.CandidateSource
     id : "SearchHistory"
     constructor : (@maxItems) ->
         super( @maxItems )
-        chrome.extension.sendRequest(
+        chrome.runtime.sendMessage(
             command : "GetSearchHistory"
         , (msg) =>
             len = msg.value.length
@@ -515,7 +515,7 @@ class g.CandSourceGoogleSuggest extends g.CandidateSource
         unless word.length > 0 then return
 
         @resetItem()
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetGoogleSuggest"
             value   : word
         }, (raws) =>
@@ -545,7 +545,7 @@ class g.CandSourceWebSuggest extends g.CandidateSource
             @notifyUpdated()
             return
 
-        chrome.extension.sendRequest( {
+        chrome.runtime.sendMessage( {
             command : "GetWebSuggest"
             value   : word
         }, (results) =>
@@ -566,7 +566,7 @@ class g.CandSourceWebSuggest extends g.CandidateSource
 class g.CandSourceTabs extends g.CandidateSource
     id : "Tabs"
     constructor : (@maxItems=-1) ->
-        chrome.extension.sendRequest(
+        chrome.runtime.sendMessage(
             command : "GetTabList"
         , (@tabs) => @onInput("") )
         super( @maxItems )
@@ -591,7 +591,7 @@ class g.CandSourceTabs extends g.CandidateSource
 sender = 0
 
 searchFixedListener = (word) ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command      : "PassToFrame"
         innerCommand : "NotifySearchFixed"
         word         : word
@@ -599,7 +599,7 @@ searchFixedListener = (word) ->
     })
 
 searchUpdatedListener = (word) ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command      : "PassToFrame"
         innerCommand : "NotifyInputUpdated"
         word         : word
@@ -607,12 +607,12 @@ searchUpdatedListener = (word) ->
     })
 
 commandFixedListener = (word) ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command      : "TopFrame"
         innerCommand : "HideCommandFrame"
     })
 
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command      : "PassToFrame"
         innerCommand : "ExecuteCommand"
         commandLine  : word
@@ -672,7 +672,7 @@ onRequest = (req) ->
 
 $(document).ready( ->
     g.logger.d "commandbox ready", this
-    chrome.extension.sendRequest( { command : "InitCommandFrame" }, (msg)->
+    chrome.runtime.sendMessage( { command : "InitCommandFrame" }, (msg)->
         frameID = msg.frameID
         opt.enableCompletion = msg.enableCompletion
         opt.commandBoxWidth = msg.commandBoxWidth
@@ -680,7 +680,7 @@ $(document).ready( ->
         opt.commandWaitTimeOut = msg.commandWaitTimeOut
     )
 
-    chrome.extension.onRequest.addListener( (req, sender, sendResponse) ->
+    chrome.runtime.onMessage.addListener( (req, sender, sendResponse) ->
         unless req.frameID? and req.frameID == frameID
             g.logger.d "onRequest: different frameID"
             sendResponse()

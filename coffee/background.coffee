@@ -250,7 +250,7 @@ g.bg =
 
     reqReadability : (req) ->
         chrome.tabs.getSelected( null, (tab)->
-            chrome.extension.sendRequest("jggheggpdocamneaacmfoipeehedigia", {
+            chrome.runtime.sendMessage("jggheggpdocamneaacmfoipeehedigia", {
                 type   : "render"
                 tab_id : tab.id
             })
@@ -419,7 +419,7 @@ g.bg =
         @cWSrch   = new $WA.WebSrch()
         @cWSrch.ready( => @gglLoaded = true )
 
-        chrome.extension.onRequest.addListener( (req, sender, sendResponse) =>
+        chrome.runtime.onMessage.addListener( (req, sender, sendResponse) =>
             g.logger.d "onRequest command: #{req.command}"
             switch req.command
                 when "NotifyTopFrame"

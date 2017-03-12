@@ -4,7 +4,7 @@ g = this.vichrome
 settings = null
 
 setSetting = (name, val, response) ->
-    chrome.extension.sendRequest({
+    chrome.runtime.sendMessage({
         command : "Settings"
         type    : "set"
         name    : name
@@ -132,7 +132,7 @@ onSettings = (msg) ->
     updateKeyMappingList()
 
 $(document).ready( ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command : "Settings"
         type    : "get"
         name    : "all"

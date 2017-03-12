@@ -107,7 +107,7 @@ class g.Surface
 
     hideStatusLine : ->
         unless g.util.isTop()
-            chrome.extension.sendRequest( {
+            chrome.runtime.sendMessage( {
                 command      : "TopFrame"
                 innerCommand : "HideStatusLine"
             })
@@ -125,7 +125,7 @@ class g.Surface
 
     setStatusLineText : (text, timeout) ->
         unless g.util.isTop()
-            chrome.extension.sendRequest( {
+            chrome.runtime.sendMessage( {
                 command      : "TopFrame"
                 innerCommand : "SetStatusLine"
                 text         : text
@@ -209,7 +209,7 @@ class g.Surface
         this
     hideCommandFrame : ->
         unless g.util.isTop()
-            chrome.extension.sendRequest( {
+            chrome.runtime.sendMessage( {
                 command      : "TopFrame"
                 innerCommand : "HideCommandFrame"
             })

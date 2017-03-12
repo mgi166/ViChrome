@@ -64,7 +64,7 @@ class g.Mode
             g.view.open( url, "_self" )
 
         else
-            chrome.extension.sendRequest {command: "ExtendURL", url: urls[0]}, (url) ->
+            chrome.runtime.sendMessage {command: "ExtendURL", url: urls[0]}, (url) ->
                 g.view.open( url, "_self" )
 
     reqTabOpenNew : (args, times) ->
@@ -93,9 +93,9 @@ class g.Mode
             word = word.substr(1)
 
             url = "http://" + g.model.getSetting("searchEngine") + "/search?gcx=c&sourceid=chrome&ie=UTF-8&q=" + word + "&qscrl=1"
-            chrome.extension.sendRequest({command : "TabOpenNew", args : [url], times : times}, g.handler.onCommandResponse)
+            chrome.runtime.sendMessage({command : "TabOpenNew", args : [url], times : times}, g.handler.onCommandResponse)
         else
-            chrome.extension.sendRequest({command: "TabOpenNew", args: words, times: times, extend: true}, g.handler.onCommandResponse)
+            chrome.runtime.sendMessage({command: "TabOpenNew", args: words, times: times, extend: true}, g.handler.onCommandResponse)
 
     blur : ->
     reqScrollDown   : (args, times) -> g.view.scrollBy( 0,  g.model.getSetting("scrollPixelCount") * times )

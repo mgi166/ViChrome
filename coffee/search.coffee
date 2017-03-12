@@ -97,7 +97,7 @@ class g.NormalSearcher
         else
             @word = word
 
-        chrome.extension.sendRequest(
+        chrome.runtime.sendMessage(
             command : "PushSearchHistory"
             value   : @word
         )

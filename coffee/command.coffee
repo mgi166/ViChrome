@@ -2,7 +2,7 @@ this.vichrome ?= {}
 g = this.vichrome
 
 sendToBackground = (com, args, times, timesSpecified, callback=g.handler.onCommandResponse) ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command : com
         args    : args
         times   : times
@@ -13,7 +13,7 @@ triggerInsideContent = (com, args, times, timesSpecified) ->
     g.model.triggerCommand "req#{com}", args, times, timesSpecified
 
 passToTopFrame = (com, args, times, timesSpecified, callback=g.handler.onCommandResponse) ->
-    chrome.extension.sendRequest( {
+    chrome.runtime.sendMessage( {
         command      : "TopFrame"
         innerCommand : com
         args         : args
