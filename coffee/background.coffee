@@ -442,7 +442,7 @@ g.bg =
                 else
                     if this["req"+req.command]
                         if not this["req"+req.command]( req, sendResponse, sender )
-                            sendResponse()
+                            true
                     else g.logger.e("INVALID command!:", req.command)
         )
 
