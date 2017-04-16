@@ -426,6 +426,7 @@ g.bg =
                     g.logger.d "top frame #{req.frameID}"
                     @tabHistory.setTopFrameID(sender.tab, req.frameID)
                     sendResponse()
+                    true
                 when "InitCommandFrame"
                     msg = {}
                     frameID = @tabHistory.getFrames(sender.tab)
@@ -439,6 +440,7 @@ g.bg =
                     msg.commandWaitTimeOut = g.SettingManager.get "commandWaitTimeOut"
 
                     sendResponse msg
+                    true
                 else
                     if this["req"+req.command]
                         if not this["req"+req.command]( req, sendResponse, sender )
