@@ -684,7 +684,7 @@ $(document).ready( ->
         unless req.frameID? and req.frameID == frameID
             g.logger.d "onRequest: different frameID"
             sendResponse()
-            return
+            return true
         onRequest(req)
     )
 )
