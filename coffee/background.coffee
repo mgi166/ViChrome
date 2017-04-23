@@ -445,6 +445,7 @@ g.bg =
                     if this["req"+req.command]
                         if not this["req"+req.command]( req, sendResponse, sender )
                             true
+                       true
                     else g.logger.e("INVALID command!:", req.command)
         )
 
