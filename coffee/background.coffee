@@ -250,7 +250,7 @@ g.bg =
 
     reqReadability : (req) ->
         chrome.tabs.getSelected( null, (tab)->
-            chrome.runtime.sendMessage("jggheggpdocamneaacmfoipeehedigia", {
+            chrome.runtime.sendMessage("mbihjmhpjmjpeleginnaaiicinnlbiek", {
                 type   : "render"
                 tab_id : tab.id
             })
