@@ -70,45 +70,36 @@ class g.EventHandler
                     for com,method of g.CommandExecuter::commandTable
                         commands.push com
                     sendResponse commands
-                    return true
                 when "GetAliases"
                     aliases = {}
                     for a,com of g.model.getAlias()
                         aliases[a] = com
                     sendResponse aliases
-                    return true
                 when "OpenCommandBox"
                     g.model.openCommandBox( req )
                     sendResponse()
-                    return true
                 when "ExecuteCommand"
                     g.model.curMode.reqExecuteCommand( req )
                     sendResponse()
-                    return true
                 when "NotifyInputUpdated"
                     g.model.curMode.notifyInputUpdated( req )
                     sendResponse()
-                    return true
                 when "NotifySearchFixed"
                     g.model.curMode.notifySearchFixed( req )
                     sendResponse()
-                    return true
                 when "HideCommandFrame"
                     g.view.hideCommandFrame()
                     sendResponse()
-                    return true
                 when "SetStatusLine"
                     g.view.setStatusLineText(req.text, req.timeout)
                     sendResponse()
-                    return true
                 when "HideStatusLine"
                     g.view.hideStatusLine()
                     sendResponse()
-                    return true
                 else
                     g.model.triggerCommand( "req#{req.command}", req.args, req.times, req.timesSpecified )
                     sendResponse()
-                    return true
+            true
         )
 
     init : ->

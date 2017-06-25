@@ -686,5 +686,6 @@ $(document).ready( ->
             sendResponse()
             return true
         onRequest(req)
+        true
     )
 )
