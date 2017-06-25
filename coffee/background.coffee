@@ -447,6 +447,7 @@ g.bg =
                             sendResponse(req)
                         true
                     else g.logger.e("INVALID command!:", req.command)
+            true
         )
 
         if g.SettingManager.get "notifyUpdateSucceeded"
