@@ -36,7 +36,7 @@ g.logLevels =
         FATAL   : 4
         NONE    : 5
 
-g.LOG_LEVEL = g.logLevels.ERROR
+g.LOG_LEVEL = g.logLevels.DEBUG
 
 levels = g.logLevels
 
