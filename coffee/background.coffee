@@ -66,7 +66,7 @@ g.bg =
         o.frameID = @tabHistory.getFrames(sender.tab)
         @tabHistory.addFrames(sender.tab)
         response o
-        true
+        false
 
     getDefaultNewTabPage : ->
         switch g.SettingManager.get "defaultNewTab"
@@ -426,7 +426,7 @@ g.bg =
                     g.logger.d "top frame #{req.frameID}"
                     @tabHistory.setTopFrameID(sender.tab, req.frameID)
                     sendResponse()
-                    true
+                    return true
                 when "InitCommandFrame"
                     msg = {}
                     frameID = @tabHistory.getFrames(sender.tab)
@@ -440,12 +440,13 @@ g.bg =
                     msg.commandWaitTimeOut = g.SettingManager.get "commandWaitTimeOut"
 
                     sendResponse msg
-                    true
+                    return true
                 else
                     if this["req"+req.command]
                         if not this["req"+req.command]( req, sendResponse, sender )
                             sendResponse(req)
-                        true
+                            return true
+                        return true
                     else g.logger.e("INVALID command!:", req.command)
             true
         )
